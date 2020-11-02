@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <img id="logo" src="https://storage.googleapis.com/iex/api/logos/{{ symbol }}.png" alt="Logo">
+    <p>A share of {{ quote["name"] }} ({{ symbol }}) costs ${{ quote["price"] }}.</p>
+{% endblock %}

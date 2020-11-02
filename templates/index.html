@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h1>Portfolio</h1>
+    <br>
+     {% if not stocks %}
+         <h4>You have no shares. Go <a href="{{ url_for('buy') }}">buy</a> some!</h4>
+    {% endif %}
+    {% if stocks %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Current Price</th>
+                <th>Profit</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+         <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <td style="font-weight: bold;">${{ total_profit }} </td>
+                <td style="font-weight: bold;">${{ total }} </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock["symbol"] }}</td>
+                    <td>{{ stock["name"] }}</td>
+                    <td>{{ stock["shares"] }}</td>
+                    <td>${{ stock["price"] }}</td>
+                    <td>${{ stock["cur_price"] }}</td>
+                    <td>${{ stock["profit"] }}</td>
+                    <td>${{ stock["cur_total"] }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="6">CASH</td>
+                <td>${{ cash }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

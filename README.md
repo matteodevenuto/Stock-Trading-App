@@ -1,1 +1,1 @@
-# cs50-finance
+# Stock Trading App
